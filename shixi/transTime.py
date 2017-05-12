@@ -11,7 +11,7 @@ def trans_time(item):
     time_stamp = int(mktime(time_array))
     return str(time_stamp)
 
-
+'''测试代码'''
 if __name__ == '__main__':
     item = " 发信站: 水木社区 (Tue May  9 17:19:33 2017), 站内 "
     stamp = trans_time(item)
