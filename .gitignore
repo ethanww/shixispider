@@ -1,0 +1,4 @@
+.idea/
+.quotesbot/*
+*.csv
+.__pycache_/
