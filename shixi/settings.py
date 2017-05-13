@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'shixi.spiders'
 ROBOTSTXT_OBEY = False
 
 # Cookie字典
-COOKIE = {'main[UTMPNUM]': '10784', 'main[UTMPKEY]': '64207820', 'Hm_lpvt_9c7f4d9b7c00cb5aba2c637c64a41567': '1494422878', 'left-show': '0', 'main[PASSWORD]': 'TsrjVL%2506O%25044r%2522%2505f%255C%25193%2503%2502V%2525p%250D%255E', 'main[XWJOKE]': 'hoho', 'left-index': '00000100000', 'main[UTMPUSERID]': 'ethanww', 'Hm_lvt_9c7f4d9b7c00cb5aba2c637c64a41567': '1493100709,1493624270,1494404344'}
+# COOKIE = {'main[UTMPNUM]': '10784', 'main[UTMPKEY]': '64207820', 'Hm_lpvt_9c7f4d9b7c00cb5aba2c637c64a41567': '1494422878', 'left-show': '0', 'main[PASSWORD]': 'TsrjVL%2506O%25044r%2522%2505f%255C%25193%2503%2502V%2525p%250D%255E', 'main[XWJOKE]': 'hoho', 'left-index': '00000100000', 'main[UTMPUSERID]': 'ethanww', 'Hm_lvt_9c7f4d9b7c00cb5aba2c637c64a41567': '1493100709,1493624270,1494404344'}
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
@@ -68,10 +68,12 @@ COOKIE = {'main[UTMPNUM]': '10784', 'main[UTMPKEY]': '64207820', 'Hm_lpvt_9c7f4d
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'shixi.pipelines.ShixiPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'shixi.pipelines.ShixiPipeline': 300,
+}
 
+MONGO_URI = 'localhost'
+MONGO_DATABASE = 'shixi'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

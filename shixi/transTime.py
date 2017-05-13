@@ -9,7 +9,7 @@ def trans_time(item):
     time_set = re.search(r'\((.*?)\)',item).group()[1:-1]  # 找到括号中的字符串，然后去掉头尾两个括号
     time_array = strptime(time_set,"%a %b %d %H:%M:%S %Y")  # 把时间转化为时间戳
     time_stamp = int(mktime(time_array))
-    return str(time_stamp)
+    return time_stamp
 
 '''测试代码'''
 if __name__ == '__main__':

@@ -4,8 +4,30 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
+import pymongo
 
 class ShixiPipeline(object):
+    collection_name = 'shuimu'
+
+    def __init__(self, mongo_uri, mongo_db):
+        self.mongo_uri = mongo_uri
+        self.mongo_db = mongo_db
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(
+            mongo_uri=crawler.settings.get('MONGO_URI'),
+            mongo_db=crawler.settings.get('MONGO_DATABASE')
+        )
+
+    def open_spider(self, spider):
+        self.client = pymongo.MongoClient(self.mongo_uri)
+        self.db = self.client[self.mongo_db]
+
+    def close_spider(self, spider):
+        self.client.close()
+
+    # 每个item pipiline组件都必须实现，必须返回一个具有数据的dict、Item对象或者DropItem异常，被丢弃的item将不会被之后的pipeline组件所处理
     def process_item(self, item, spider):
+        self.db[self.collection_name].update({'title': item['title']}, dict(item), True)
         return item
